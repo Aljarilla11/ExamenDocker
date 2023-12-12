@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  cliente:
+    container_name: cliente
+    build: ./cliente
+    ports: 
+      - 8080:80
+    volumes:
+      - ./cliente:/var/www/html
+    depends_on:
+      - datos
+
+  cartero:
+    container_name: cartero
+    build: ./cartero
+    ports: 
+      - 8081:80
+    volumes:
+      - ./cartero:/var/www/html
+    depends_on:
+      - datos
+  datos:
+    build: ./datos
+  generarpdf:
+    container_name: generarpdf
+    build: ./generarpdf
+    ports: 
+      - 8082:80
+    volumes:
+      - ./generarpdf:/var/www/html
+    depends_on:
+      - datos
+
+
+
