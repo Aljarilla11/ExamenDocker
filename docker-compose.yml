@@ -22,6 +22,8 @@ services:
       - datos
   datos:
     build: ./datos
+    ports: 
+      - 3306:3306
   generarpdf:
     container_name: generarpdf
     build: ./generarpdf
